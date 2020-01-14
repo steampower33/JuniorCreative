@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Network</title>
 </head>
 <body>
-    <h1>Main Title</h1>
+    <h1>NetWork</h1>
     
     <ul class="nav justify-content-end">
         {% if user.is_active %}
@@ -20,16 +20,24 @@
     </ul>
     <hr>
 
-    {% block content %}
-    {% endblock %}
-
-    <table>
-        <tr>
-            <th><a href = "{% url 'computer' %}">Computer</a></th>   <th>Foriegn Language</th>    <th>Math</th>
-        </tr>
-        <tr>
-            <th>Chemistry</th>  <th>Engineering</th>    <th>Physics</th>
-        </tr>
-    </table>
+    <dl>
+        <dt>
+            TCP/IP
+        </dt>
+        <dd>
+            <ul>
+                <li>
+                    <span class ="cateSub_txt">
+                        <a href = "/">난이도 상</a>
+                    </span>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            HTTP
+        </dt>
+    </dl>
 </body>
 </html>
