@@ -6,4 +6,6 @@ urlpatterns = [
     path('', views.homepage),
     path('login/', auth_views.LoginView.as_view(), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(), name = 'logout'),
+    path('computer/', views.computer, name = 'computer'),
+    path('computer/network/', views.network, name = 'network'),
 ]
