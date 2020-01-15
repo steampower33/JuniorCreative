@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computer</title>
+</head>
+<body>
+    <h1>Computer</h1>
+    
+    <ul class="nav justify-content-end">
+        {% if user.is_active %}
+        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+
+        {% else %}
+        <a class="nav-link" href="{% url 'login' %}?next={{ reqeust.path }}"> Login</a>
+        
+        {% endif %}
+    </ul>
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+    <table>
+        <tr>
+            <th><a href = "{% url 'network' %}">Network</a></a></th>   <th>Security</th>    <th>Algorithm</th>
+        </tr>
+        <tr>
+            <th>Math</th>  <th>Mobile</th>    <th>Machine Learning</th>
+        </tr>
+    </table>
+</body>
+</html>
