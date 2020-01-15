@@ -48,6 +48,7 @@
 
         {% else %}
         <a class="nav-link" href="{% url 'login' %}?next={{ reqeust.path }}"> Login</a>
+        <a class="nav-link" href="{% url 'signup' %}?next={{ reqeust.path }}"> Signup</a>
         
         {% endif %}
     </ul>
@@ -106,7 +107,7 @@
             </div>
         </div>
     </div>
-
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

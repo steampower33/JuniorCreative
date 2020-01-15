@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views
+import bookstore.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('bookstore.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('', bookstore.views.homepage, name='homepage'),
+    path('bookstore/', include('bookstore.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
