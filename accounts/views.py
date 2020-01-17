@@ -8,10 +8,10 @@ def signup(request):
             user = User.objects.create_user(
                 username = request.POST['username'], password = request.POST["password1"])
             auth.login(request, user)
-            return redirect('bookstore/homepage')
-        return render(request, 'accounts/signup.html')
+            return redirect('homepage')
+        return render(request, 'signup.html')
 
-    return render(request, 'accounts/signup.html')
+    return render(request, 'signup.html')
 
 def login(request):
     if request.method == "POST":
@@ -20,22 +20,12 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('bookstore/homepage')
+            return redirect('homepage')
         else:
-            return render(request, 'accounts/login.html', {'error': 'username or password is incorrect'})
+            return render(request, 'login.html', {'error': 'username or password is incorrect'})
     else:
-        return render(request, 'accounts/login.html')
+        return render(request, 'login.html')
 
 def logout(request):
     auth.logout(request)
-    return redirect('bookstore/homepage')
-
-
-def facebook(request):
-    return render(request, 'accounts/facebook.html')
-
-def github(request):
-    return render(request, 'accounts/github')
-
-def google(request):
-    return render(request, 'accounts/google.html')
+    return redirect('homepage')
