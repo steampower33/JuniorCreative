@@ -1,0 +1,22 @@
+{% extends 'bookstore/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>컴퓨터</title>
+{% endblock %}
+
+{% block content %}
+    <!-- 첫째줄 -->
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <!-- Designed by https://www.flaticon.com/authors/smalllikeart -->
+            <a href="{% url 'game' %}" class="btn btn-light col-lg-2" id="click-image"><img src="{% static 'images/game.png' %}">게임</a>
+            <!-- Designed by https://www.flaticon.com/authors/freepik -->
+            <a href="#" class="btn btn-light col-lg-2" id="click-image"><img src="{% static 'images/graphic.png' %}">그래픽/디자인/멀티미디어</a>
+            <!-- Designed by https://www.flaticon.com/authors/flat-icons -->
+            <a href="{% url 'network' %}" class="btn btn-light col-lg-2" id="click-image"><img src="{% static 'images/network.png' %}">네트워크/해킹/보안</a>
+            <!-- Designed by https://www.flaticon.com/authors/flat-icons -->
+            <a href="#" class="btn btn-light col-lg-2" id="click-image"><img src="{% static 'images/mobile.png' %}">모바일 프로그래밍</a>
+        </div>
+    </div>
+{% endblock %}
