@@ -1,0 +1,10 @@
+[Unit]
+Description=TLS tunnel for network daemons
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/local/bin/stunnel
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
