@@ -29,3 +29,13 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('homepage')
+
+
+def facebook(request):
+    return render(request, 'facebook.html')
+
+def github(request):
+    return render(request, 'github')
+
+def google(request):
+    return render(request, 'google.html')
