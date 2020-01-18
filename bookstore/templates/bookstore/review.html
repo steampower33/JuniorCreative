@@ -1,0 +1,13 @@
+{% extends 'bookstore/network.html' %}
+
+{% block content %}
+    {% for review in book.reviews.all %}
+        <div class="comment">
+            <div class="date">{{ review.created_date }}</div>
+            <strong>{{ review.author }}</strong>
+            <p>{{ review.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p>No reviews here yet :(</p>
+    {% endfor %}
+{% endblock %}
