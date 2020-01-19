@@ -1,24 +1,44 @@
 {% extends 'bookstore/base.html' %}
 {% load static %}
 
-
 {% block title %}
 <title>게임</title>
 {% endblock %}
 
 {% block content %}
-    <!-- 첫째줄 -->
-    <div class="container">
-        <div class="row justify-content-md-center">
-            {{ book_for_title.title }}
-            <br>
-            {% for book in final_books %}
-                {{ book.reviews__author}}
-                {{ book.reviews__text}}
-                {{ book.reviews__grade}}
-                <br>
-            {% endfor %}
+<!-- 첫째줄 -->
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div id="cateSubListWrap" class="cateSubListArea clearfix">
+            <div class="row justify-content-md-center border border-dark">
+                <table class="table">
+                    <thead>
+                        게임
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="">게임 기획</a></td>
+                            <td><a href="">게임 개발</a></td>
+                            <td><a href="">게임가이드북/화보집</a></td>
+                            <td><a href="">모바일 게임</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+</div>
 
+<div class="container">
+    <div class="row justify-content-md-center">
+        {{ book_for_title.title }}
+        <br>
+        {% for book in final_books %}
+        {{ book.reviews__author}}
+        {{ book.reviews__text}}
+        {{ book.reviews__grade}}
+        <br>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
