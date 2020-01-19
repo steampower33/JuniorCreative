@@ -18,8 +18,15 @@ def graphic(request):
     return render(request, 'bookstore/computer/graphic.html')
 
 def network(request):
+    book_type_small_network = Book.objects.filter(type_small='NET').values('title', 'link', 'author_name', 'author_link', 'pub_name', 'pub_date', 'reviews__author', 'reviews__text').annotate(Avg('reviews__grade')).order_by('-reviews__grade__avg')
+    first_book = book_type_small_network[0]
+    book_recommand = book_type_small_network.filter(title=first_book['title'])
+    book_for_list = book_type_small_network[2::]
     return render(request, 'bookstore/computer/network.html', {
-
+        'books' : book_type_small_network,
+        'first_book' : first_book,
+        'book_recommand' : book_recommand,
+        'book_list' : book_for_list
     })
 
 def mobile(request):

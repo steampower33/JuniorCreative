@@ -32,17 +32,26 @@
 
 <div class="container">
     <div class="row justify-content-md-center">
-        {% for book in books %}
-        author name : {{ book.author_name }}<br>
-        title : {{ book.title }}<br>
+        {{ first_book.title }}
+        <img src="{{ first_book.link  }}" alt="{{ image.name }}">
+        {{ first_book.author_name }}
+        {{ first_book.pub_name }}
+        {{ first_book.pub_date }}
+        <br>
+        <br>
+        {% for book in book_recommand %}
+            {{ book.reviews__author}}
+            {{ book.reviews__text}}
+            {{ book.reviews__grade}}
+            <br>
         {% endfor %}
         <br>
-        <hr>
-        {% for book in books %}
-        {{ book.reviews__author}}<br>
-        {{ book.reviews__text}}<br>
-        {{ book.reviews__grade}}<br>
         <br>
+        {% for book in book_list %}
+            {{ book.title }}
+            <img src="{{ book.link  }}" alt="{{ image.name }}">
+            {{ book.author_name }}
+            {{ book.pub_name }}
         {% endfor %}
     </div>
 </div>
