@@ -37,16 +37,15 @@
         {{ first_book.author_name }}
         {{ first_book.pub_name }}
         {{ first_book.pub_date }}
-        <br>
-        <br>
+
         {% for book in book_recommand %}
             {{ book.reviews__author}}
             {{ book.reviews__text}}
             {{ book.reviews__grade}}
             <br>
         {% endfor %}
-        <br>
-        <br>
+        <a class="btn btn-default" href="{% url 'add_review' %}">Add Review</a>
+
         {% for book in book_list %}
             {{ book.title }}
             <img src="{{ book.link  }}" alt="{{ image.name }}">
