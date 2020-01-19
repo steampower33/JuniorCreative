@@ -11,7 +11,7 @@ from bookstore.models import Book
 # 사용.
 def get_all():
     # 주소 및 뷰티풀 수프 설정.
-    url = "http://www.yes24.com/24/Category/Display/001001003027?FetchSize=20&ParamSortTp=05"
+    url = "http://www.yes24.com/24/Category/Display/001001003024?ParamSortTp=05"
     req = requests.get(url)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')

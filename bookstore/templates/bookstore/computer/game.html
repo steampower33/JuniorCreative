@@ -31,12 +31,15 @@
 
 <div class="container">
     <div class="row justify-content-md-center">
-        {{ book_for_title.title }}
-        <br>
-        {% for book in final_books %}
-        {{ book.reviews__author}}
-        {{ book.reviews__text}}
-        {{ book.reviews__grade}}
+        {% for book in books %}
+        author name : {{ book.author_name }}<br>
+        title : {{ book.title }}<br>
+        {% endfor %}
+        <br><hr>
+        {% for book in books %}
+        {{ book.reviews__author}}<br>
+        {{ book.reviews__text}}<br>
+        {{ book.reviews__grade}}<br>
         <br>
         {% endfor %}
     </div>
