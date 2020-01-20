@@ -8,40 +8,23 @@
 {% block content %}
 <!-- 첫째줄 -->
 <div class="container">
-    <div class="row justify-content-md-center">
-        <div id="cateSubListWrap" class="cateSubListArea clearfix">
-            <div class="row justify-content-md-center border border-dark">
-                <table class="table">
-                    <thead>
-                        게임
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="">게임 기획</a></td>
-                            <td><a href="">게임 개발</a></td>
-                            <td><a href="">게임가이드북/화보집</a></td>
-                            <td><a href="">모바일 게임</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <!-- 태그 시작 -->
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content">
+            <table class="table">
+                <thead class="d-flex justify-content-center">
+                    게임
+                </thead>
+                <tbody class="d-flex justify-content-center">
+                    <tr>
+                        <td><a href="">게임 기획</a></td>
+                        <td><a href="">게임 개발</a></td>
+                        <td><a href="">게임가이드북/화보집</a></td>
+                        <td><a href="">모바일 게임</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row justify-content-md-center">
-        {% for book in books %}
-        author name : {{ book.author_name }}<br>
-        title : {{ book.title }}<br>
-        {% endfor %}
-        <br><hr>
-        {% for book in books %}
-        {{ book.reviews__author}}<br>
-        {{ book.reviews__text}}<br>
-        {{ book.reviews__grade}}<br>
-        <br>
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

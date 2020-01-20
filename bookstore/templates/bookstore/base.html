@@ -4,65 +4,107 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lay.css' %}">
+
+    <style>
+        .carousel-inner>.carousel-item>img {
+            width: 360px; height: 720px;
+            
+        }
+    </style>
+
+
     {% block title %}
     {% endblock %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="{% url 'home' %}">RecoBook</a> <button
-            class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
-                class="navbar-toggler-icon"></span> </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        $('.carousel').carousel({
+                    interval: 2000 //기본 5초 
+                }) 
+    </script>
 
-                <!-- <li class="nav-item"> <a class="nav-link" href="#">Link</a> </li> -->
+    
+    <header id="header">
+        <div class="container_">
+            <div class="row_">
+                <div class="header">
+                    <div class="header_menu">
+                        {% if user.is_active %}
+                        <a href="{% url 'logout' %}">logout</a>
 
-                {% if user.is_active %}
-                <li class="nav-item active"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
+                        {% else %}
+                        <a href="{% url 'login' %}?next={{ reqeust.path }}">Login</a>
 
-                {% else %}
-                <li class="nav-item active"><a class="nav-link" href="{% url 'login' %}?next={{ reqeust.path }}">Login</a></li>
-
-                {% endif %}
-
-                <li class="nav-item active"><a class="nav-link" href="{% url 'signup' %}?next={{ reqeust.path }}"> Signup</a></li>
-                <!-- 드랍다운 -->
-                <!--
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Dropdown </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                        <a class="dropdown-item" href="#">Action</a> 
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div> 
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        {% endif %}
+                        <a href="{% url 'signup' %}?next={{ reqeust.path }}"> Signup</a>
                     </div>
-                </li>
-                //-->
-                <!-- <li class="nav-item"> <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a></li> -->
-            </ul>
-            <form class="form-inline my-2 my-lg-0"> <input class="form-control mr-sm-2" type="search"
-                    placeholder="Search" aria-label="Search"> <button class="btn btn-outline-success my-2 my-sm-0"
-                    type="submit">Search</button>
-            </form>
+                    <!-- //header_menu -->
+                    <div class="header_tit">
+                        <h1>RECOBOOK</h1><br>
+                        <a href="{% url 'homepage' %}">Home</a>
+                    </div>
+                    <!-- //header_tit -->
+                </div>
+            </div>
         </div>
-    </nav>
-    {% block content %}
-    {% endblock %}
+    </header>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+    <main>
+        <section id="contents">
+            <div class="container">
+                <section id="cont_left">
+                    <article class="column col1">
+                        <h4 class="col_tit">Category</h4>
+                        <!-- 메뉴 -->
+                        <div class="menu">
+                            <ul>
+                                <li><a href="{% url 'computer' %}">IT 모바일 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">자연과학 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">경제 경영 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">역사 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">여행 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">예술<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">인물<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">에세이<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">자기계발<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">종교<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">청소년<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">인문<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">유아<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">소설/시/희곡<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">사회 정치<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">만화/라이트노벨<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                                <li><a href="#">국어 외국어 사전<i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <!--//메뉴 -->
+                    </article>
+                    <!-- //col1 -->
+                    
+                </section>
+                <!-- //cont_left -->
+                <section id="cont_center">
+                    {% block content %}
+                    {% endblock %}
+                </section>
+            </div>
+        </section>
+    </main>
+
+
 </body>
 
 </html>

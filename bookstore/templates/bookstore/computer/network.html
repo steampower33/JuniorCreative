@@ -3,19 +3,21 @@
 
 {% block title %}
 <title>네트워크/해킹/보안</title>
+
 {% endblock %}
 
 {% block content %}
-<!-- 첫째줄 -->
+
 <div class="container">
-    <div class="row justify-content-md-center">
-        <div id="cateSubListWrap" class="cateSubListArea clearfix">
-            <div class="row justify-content-md-center border border-dark">
-                <table class="table">
-                    <thead>
-                        네트워크/해킹/보안
-                    </thead>
-                    <tbody>
+    <!-- 태그 시작 -->
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content">
+            <div class="layout">
+                <table class="simple_table">
+                    <tbody class="justify-content-center">
+                        <tr>
+                            <th class="font-size" scope="row" colspan="3"><strong>네트워크/해킹/보안</strong></th>
+                        </tr>
                         <tr>
                             <td><a href="">네트워크 일반</a></td>
                             <td><a href="">TCP/IP</a></td>
@@ -26,32 +28,168 @@
             </div>
         </div>
     </div>
-</div>
-
-            
-
-<div class="container">
-    <div class="row justify-content-md-center">
-        {{ first_book.title }}
-        <img src="{{ first_book.link  }}" alt="{{ image.name }}">
-        {{ first_book.author_name }}
-        {{ first_book.pub_name }}
-        {{ first_book.pub_date }}
-
-        {% for book in book_recommand %}
-            {{ book.reviews__author}}
-            {{ book.reviews__text}}
-            {{ book.reviews__grade}}
-            <br>
-        {% endfor %}
-        <a class="btn btn-default" href="{% url 'add_review' %}">Add Review</a>
-
-        {% for book in book_list %}
-            {{ book.title }}
-            <img src="{{ book.link  }}" alt="{{ image.name }}">
-            {{ book.author_name }}
-            {{ book.pub_name }}
-        {% endfor %}
+    
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content">
+            <table class="simple_table">
+                <thead>
+                    
+                </thead>
+                <tbody class="d-flex justify-content-center">
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
+    <!-- 태그 끝 -->
+    
+    <!-- 추천 책 시작 -->
+
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content reco">
+            <div class="layout">
+                <table class="simple_table">
+                    <tbody>
+                        <tr>
+                            <th class="font-size" scope="row"><strong>RecoBook</strong></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="row content">
+            <div class="layout">
+                <table class="simple_table">
+                    <tbody>
+                        <tr>
+                            <th scope="row"><a href="#" class="btn btn-light book_img" id="book-click-image"><img src="{{ first_book.link }}" alt="{{ image.name }}"></a></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="layout">
+                <table class="simple_table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">제목</th>
+                            <td>{{ first_book.title }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">작가</th>
+                            <td>{{ first_book.author_name }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">출판사</th>
+                            <td>{{ first_book.pub_name }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">출판일</th>
+                            <td>{{ first_book.pub_date }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">평점</th>
+                            <td>{{ book_aver.reviews__grade__avg }}</td>
+                        </tr>
+                        <tr>
+                            <!-- 별점 -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content">
+            <div class="layout">
+                <table class="simple_table">
+                    {% for book in book_recommand %}
+                    <tbody>
+                        <tr>
+                            <th scope="row" width="100">{{ book.reviews__author}}</th>
+                            <td>{{ book.reviews__grade}}</td>
+                        </tr>
+                        <tr>
+                            <th class="left" colspan="2">{{ book.reviews__text}}</th>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                <form method="POST" class="post-form">
+                    {% csrf_token %}
+                    <div class="form_box">
+                        <div class="font-size"><strong>댓글 작성</strong></div>
+                        <div >
+                            {{ form.author }}
+                            {{ form.text }}
+                            {{ form.grade }}
+                            <button type="submit" class="save btn-danger">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 추천 책 끝 -->
+
+    <!-- 그외 책 시작 -->
+    <!-- <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content">
+            <div class="layout">
+                {% for book in book_list %}
+                {{ book.title }}
+                <img src="{{ book.link  }}" alt="{{ image.name }}">
+                {{ book.author_name }}
+                {{ book.pub_name }}
+                {{ book.pub_date }}
+                {% endfor %}
+            </div>
+        </div>
+    </div> -->
+    <!-- 그 외 책 끝 -->
+    <div id="cateSubListWrap" class="row d-flex justify-content-center cateSubListArea clearfix">
+        <div class="content reco">
+            <div class="layout">
+                <table class="simple_table">
+                    <tbody>
+                        <tr>
+                            <th class="font-size" scope="row"><strong>그 외 도서</strong></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <!-- 슬라이드 쇼 -->
+            <div class="carousel-item active">
+                <!--가로--> 
+                <img class="d-block w-100" src="{% static 'images/logo.png' %}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            {% for book in book_list %}
+            <div class="col carousel-item">
+                <a href="#" class="btn btn-light book_img" id="book-click-image"><img class="d-block w-100" src="{{ book.link  }}" alt="{{ image.name }}"></a>  
+            </div>
+            {% endfor %}
+            <div class="col">
+                
+            </div>
+            <!-- 왼쪽 오른쪽 화살표 버튼 --> 
+            <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <!-- <span>Previous</span> --> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <!-- <span>Next</span> --> </a> <!-- / 화살표 버튼 끝 -->
+
+        </div>
+    </div>
+
+    
+
+
 </div>
+
+
 {% endblock %}

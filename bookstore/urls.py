@@ -11,5 +11,5 @@ urlpatterns = [
     path('computer/graphic/', views.graphic, name='graphic'),
     path('computer/network/', views.network, name = 'network'),
     path('computer/mobile/', views.mobile, name='mobile'),
-    path('add_review/', views.add_review, name='add_review'),
+    #path('add_review/', views.add_review, name='add_review'),
 ]
